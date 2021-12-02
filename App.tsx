@@ -8,90 +8,57 @@
  * @format
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React from "react"
+import { StyleSheet, useColorScheme } from "react-native"
+import { Colors } from "react-native/Libraries/NewAppScreen"
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// styles
+import { NativeBaseProvider, extendTheme } from "native-base"
+// navigation
+import { NavigationContainer } from "@react-navigation/native"
+import Tabs from "./components/Tabs"
 
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+const theme = extendTheme({
+  colors: {
+    // Add thematic colors
+    gPurple: {
+      50: "#f7e4ff",
+      100: "#e2b3ff",
+      200: "#cd81fd",
+      300: "#ba4ffc",
+      400: "#a721fb",
+    },
+    sRed: {
+      50: "#ffe5e5",
+      100: "#fababa",
+      200: "#f18f8f",
+      300: "#e96262",
+      400: "#e23737",
+    },
+    oOrange: {
+      50: "#fff5df",
+      100: "#ffe1b3",
+      200: "#fecc83",
+      300: "#feb852",
+    },
+  },
+})
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === "dark"
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  }
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+    <NativeBaseProvider theme={theme}>
+      <NavigationContainer>
+        <Tabs />
+      </NavigationContainer>
+    </NativeBaseProvider>
+  )
+}
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -100,16 +67,16 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   sectionDescription: {
     marginTop: 8,
     fontSize: 18,
-    fontWeight: '400',
+    fontWeight: "400",
   },
   highlight: {
-    fontWeight: '700',
+    fontWeight: "700",
   },
-});
+})
 
-export default App;
+export default App
