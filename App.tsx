@@ -16,6 +16,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen"
 import { NativeBaseProvider, extendTheme } from "native-base"
 // navigation
 import { NavigationContainer } from "@react-navigation/native"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import Tabs from "./components/Tabs"
 
 const theme = extendTheme({
@@ -40,6 +41,7 @@ const theme = extendTheme({
       100: "#ffe1b3",
       200: "#fecc83",
       300: "#feb852",
+      400: "#fea11b",
     },
   },
 })
@@ -51,12 +53,32 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   }
 
+  const Stack = createNativeStackNavigator()
+
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
-        <Tabs />
+        <Stack.Navigator>
+          <Tabs />
+        </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
+  )
+}
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Settings" component={Settings} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
