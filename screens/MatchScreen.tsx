@@ -1,8 +1,9 @@
 import React from "react"
 
-import { Center, Box } from "native-base"
+import { Center, Box, Button } from "native-base"
+import { MatchScreenNavigationProp } from "../util/types"
 
-const MatchScreen = () => {
+const MatchScreen = ({ navigation }: MatchScreenNavigationProp) => {
   return (
     <Center flex={1} px="5">
       <Box
@@ -16,6 +17,7 @@ const MatchScreen = () => {
       >
         The MatchScreen
       </Box>
+      <Button onPress={() => navigation.goBack()}>Go back</Button>
     </Center>
   )
 }

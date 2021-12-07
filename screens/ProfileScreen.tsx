@@ -1,9 +1,9 @@
 import React from "react"
 
 import { Center, Box } from "native-base"
-import ProfileScreenNavigationProp from "../util/types"
+import { ProfileScreenNavigationProp } from "../util/types"
 
-const ProfileScreen = ({ navigation: ProfileScreenNavigationProp }) => {
+const ProfileScreen = ({ navigation }: ProfileScreenNavigationProp) => {
   return (
     <Center flex={1} px="3">
       <Box
