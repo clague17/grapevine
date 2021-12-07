@@ -13,11 +13,12 @@ import { StyleSheet, useColorScheme } from "react-native"
 import { Colors } from "react-native/Libraries/NewAppScreen"
 
 // styles
-import { NativeBaseProvider, extendTheme } from "native-base"
+import { NativeBaseProvider, extendTheme, Stack } from "native-base"
 // navigation
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import Tabs from "./components/Tabs"
+import LoginScreen from "./screens/LoginScreen"
 
 const theme = extendTheme({
   colors: {
@@ -59,26 +60,15 @@ const App = () => {
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Tabs />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen
+            name="Tabs"
+            component={Tabs}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
-  )
-}
-
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Settings" component={Settings} />
-      </Stack.Navigator>
-    </NavigationContainer>
   )
 }
 
