@@ -1,7 +1,10 @@
 import React from "react"
-import { Center, Box, Button, VStack } from "native-base"
+import { Center, Box, Button, VStack, Image } from "native-base"
 import { LoginScreenNavigationProp } from "../util/types"
 import { Dimensions } from "react-native"
+const grapes = require("../assets/grapes.png")
+const orange = require("../assets/orange.png")
+const strawberry = require("../assets/strawberry.png")
 
 const deviceWidth = Dimensions.get("window").width //full width
 const deviceHeight = Dimensions.get("window").height //full height
@@ -20,31 +23,31 @@ const LoginScreen = ({ navigation }: LoginScreenNavigationProp) => {
 
   return (
     <Center flex={1} px="5">
-      <Box
-        bg="sRed.50"
-        _text={{
-          fontSize: "md",
-          fontWeight: "medium",
-          color: "sRed.400",
-          letterSpacing: "lg",
-        }}
-      >
-        The LoginScreen
-      </Box>
       <VStack height="100%">
         <Box
           bg="sRed.100"
           height="25%"
           position="relative"
           top="0"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
           width={deviceWidth}
-        ></Box>
+        >
+          <Image source={strawberry} po alt={"litty"} />
+        </Box>
+
         <Box
           position="relative"
           bg="oOrange.100"
           height="25%"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
           width={deviceWidth}
-        ></Box>
+        >
+          <Image source={orange} position="relative" alt={"litty"} />
+        </Box>
         <Box
           position="relative"
           bottom="0"
@@ -55,8 +58,9 @@ const LoginScreen = ({ navigation }: LoginScreenNavigationProp) => {
           width={deviceWidth}
           bg="gPurple.100"
         >
+          <Image source={grapes} alt={"litty"} />
           <Box w={"60%"} display="flex">
-            <Button mb={5} bg="white">
+            <Button my={5} bg="white">
               Get started
             </Button>
             <Button onPress={login} bg={"gPurple.400"}>
