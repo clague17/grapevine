@@ -1,5 +1,5 @@
 import React from "react"
-import { Center, Box, Button, VStack, Image } from "native-base"
+import { Center, View, Box, Button, VStack, Image, Text } from "native-base"
 import { LoginScreenNavigationProp } from "../util/types"
 import { Dimensions } from "react-native"
 const grapes = require("../assets/grapes.png")
@@ -34,7 +34,13 @@ const LoginScreen = ({ navigation }: LoginScreenNavigationProp) => {
           justifyContent="center"
           width={deviceWidth}
         >
-          <Image source={strawberry} po alt={"litty"} />
+          <Image
+            source={strawberry}
+            alt={"strawberry"}
+            flex={1}
+            aspectRatio={0.42}
+            resizeMode={"contain"}
+          />
         </Box>
 
         <Box
@@ -46,20 +52,40 @@ const LoginScreen = ({ navigation }: LoginScreenNavigationProp) => {
           justifyContent="center"
           width={deviceWidth}
         >
-          <Image source={orange} position="relative" alt={"litty"} />
+          <Image
+            source={orange}
+            alt={"orange"}
+            flex={1}
+            aspectRatio={0.59}
+            resizeMode={"contain"}
+          />
         </Box>
         <Box
           position="relative"
           bottom="0"
           display="flex"
+          flexDirection="column"
           alignItems="center"
-          justifyContent="center"
           height="50%"
           width={deviceWidth}
           bg="gPurple.100"
         >
-          <Image source={grapes} alt={"litty"} />
-          <Box w={"60%"} display="flex">
+          <Image
+            source={grapes}
+            aspectRatio={0.42}
+            alt={"grapes"}
+            display="flex"
+            resizeMode={"contain"}
+          />
+          <Text
+            color={"gPurple.500"}
+            fontFamily="masthead"
+            fontWeight={700}
+            fontSize={"40px"}
+          >
+            GRAPEVINE.
+          </Text>
+          <Box w={"60%"} display="flex" mt={1}>
             <Button my={5} bg="white">
               Get started
             </Button>

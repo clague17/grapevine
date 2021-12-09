@@ -21,6 +21,17 @@ import Tabs from "./components/Tabs"
 import LoginScreen from "./screens/LoginScreen"
 
 const theme = extendTheme({
+  fontConfig: {
+    Raleway: {
+      700: {
+        bold: "RalewayBold",
+      },
+      800: {
+        bold: "RalewayHeavy",
+      },
+    },
+  },
+  fonts: { masthead: "Raleway" },
   colors: {
     // Add thematic colors
     gPurple: {
@@ -29,6 +40,7 @@ const theme = extendTheme({
       200: "#cd81fd",
       300: "#ba4ffc",
       400: "#a721fb",
+      500: "#953BCC",
     },
     sRed: {
       50: "#ffe5e5",
@@ -60,7 +72,13 @@ const App = () => {
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen
+            options={{
+              header: () => null,
+            }}
+            name="LoginScreen"
+            component={LoginScreen}
+          />
           <Stack.Screen
             name="Tabs"
             component={Tabs}
