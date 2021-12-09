@@ -71,8 +71,9 @@ const LoginScreen = ({ navigation }: LoginScreenNavigationProp) => {
           bg="gPurple.100"
         >
           <Image
+            my={5}
             source={grapes}
-            aspectRatio={0.42}
+            height="30%"
             alt={"grapes"}
             display="flex"
             resizeMode={"contain"}
